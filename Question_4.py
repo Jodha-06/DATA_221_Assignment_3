@@ -1,10 +1,6 @@
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import precision_score
-from sklearn.metrics import recall_score
-from sklearn.metrics import f1_score
+from sklearn.metrics import accuracy_score,confusion_matrix,precision_score,recall_score,f1_score
 import pandas as pd
 
 kidney_disease_dataFrame = pd.read_csv("kidney_disease.csv")
@@ -22,11 +18,12 @@ knnModel.fit(features_train,labels_train)
 
 predictedLabels = knnModel.predict(features_test)
 
-print("Confusion Matrix:\n", confusion_matrix(labels_test,predictedLabels))
-print("Accuracy:", accuracy_score(labels_test,predictedLabels))
-print("Precision:", precision_score(labels_test,predictedLabels))
-print("Recall:", recall_score(labels_test,predictedLabels ))
-print("F1-score:", f1_score(labels_test,predictedLabels ))
+if __name__ == "__main__":
+    print("Confusion Matrix:\n", confusion_matrix(labels_test,predictedLabels))
+    print("Accuracy:", accuracy_score(labels_test,predictedLabels))
+    print("Precision:", precision_score(labels_test,predictedLabels))
+    print("Recall:", recall_score(labels_test,predictedLabels ))
+    print("F1-score:", f1_score(labels_test,predictedLabels ))
 
 # In kidney disease prediction, a True positive means that the model correctly predicts that a patient has kidney disease whilst a True negative means that the model correctly predicts that a patient is healthy.
 #Conversely, a False positive means that the model predicts kidney disease for a healthy patient whilst a False negative means that the model fails to detect kidney disease in a patient that has it.
