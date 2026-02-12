@@ -1,7 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#Load the crime dataset
 crime_Dataset = pd.read_csv("crime1.csv")
+#Select the ViolentCrimesPerPop column in the dataset
 value_of_violent_Crimes = crime_Dataset["ViolentCrimesPerPop"]
 
 # Histogram of ViolentCrimesPerPop
