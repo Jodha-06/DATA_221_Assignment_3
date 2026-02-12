@@ -1,15 +1,19 @@
 import pandas as pd
 import numpy as np
 
+#Load the crime dataset
 crime_Dataset = pd.read_csv("crime1.csv")
+#Select the ViolentCrimesPerPop column in the dataset
 value_of_violent_Crimes = crime_Dataset["ViolentCrimesPerPop"]
 
+#Compute mean, median, standard deviation, minimum, and maximum values
 mean_value = value_of_violent_Crimes.mean()
 median_value = value_of_violent_Crimes.median()
 standard_deviation_value = value_of_violent_Crimes.std()
 minimum_value = value_of_violent_Crimes.min()
 maximum_value = value_of_violent_Crimes.max()
 
+#Print the sesults
 print(f"Mean:", mean_value)
 print(f"Median:", median_value)
 print(f"Standard Deviation:", standard_deviation_value)
