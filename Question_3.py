@@ -1,13 +1,15 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+#Load the kidney disease dataset
 kidney_disease_dataFrame = pd.read_csv("kidney_disease.csv")
 
-
+#Create feature matrix X
 featureMatrix = kidney_disease_dataFrame.drop(columns=["classification"])
+#Create label vector Y
 targetLabels = kidney_disease_dataFrame["classification"]
 
-
+#Split the data into training (70%) and testing (30%)
 features_train, features_test, labels_train, labels_test = train_test_split(featureMatrix, targetLabels, test_size=0.30, random_state=42)
 
 # We should not train and tets a model on the same data because the model may end up memorizing the training examples. This can potentially lead to unrealistic performance which will not reflect how the model will perform on new data
