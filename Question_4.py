@@ -3,19 +3,27 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score,confusion_matrix,precision_score,recall_score,f1_score
 import pandas as pd
 
+#Load the kidney disease dataset
 kidney_disease_dataFrame = pd.read_csv("kidney_disease.csv")
 
+#Select only numeric values
 featureMatrix = kidney_disease_dataFrame._get_numeric_data()
+
+#Classification labels
 targetLabels = kidney_disease_dataFrame["classification"].map({"ckd":1,"notckd":0})
 
+#Remove rows with missing values
 featureMatrix = featureMatrix.dropna()
 targetLabels = targetLabels.loc[featureMatrix.index]
 
+#Split the dataset into training (70%) and testing (30%)
 features_train, features_test, labels_train, labels_test = train_test_split(featureMatrix,targetLabels,test_size=0.3,random_state=42)
 
+#Train a K-nearest classifier with k=5
 knnModel = KNeighborsClassifier(n_neighbors=5)
 knnModel.fit(features_train,labels_train)
 
+#Predict labels for the test data
 predictedLabels = knnModel.predict(features_test)
 
 if __name__ == "__main__":
