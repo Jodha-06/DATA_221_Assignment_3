@@ -3,9 +3,12 @@ from sklearn.metrics import accuracy_score
 import pandas as pd
 from Question_4 import features_train, labels_train, features_test, labels_test
 
+#Test cases
 kValues = [1,3,5,7,9]
+#List to store test accuracy for each k
 listofAccuracyResults = []
 
+#Train a KNN model for each value of k
 for k in kValues:
     knn_model = KNeighborsClassifier(n_neighbors=k)
     knn_model.fit(features_train, labels_train)
@@ -13,7 +16,7 @@ for k in kValues:
     accuracy = accuracy_score(labels_test, predictedLabels)
     listofAccuracyResults.append(accuracy)
 
-
+# Create a table showing k values and test accuracy
 resultsDataFrame = pd.DataFrame({"k": kValues,"Test Accuracy":listofAccuracyResults})
 
 print(resultsDataFrame)
